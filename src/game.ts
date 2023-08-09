@@ -1,6 +1,7 @@
 import { Block } from './block';
 import { Board } from './board';
-import { GameStateInstructions } from './game-state';
+import { GameState, GameStateInstructions } from './game-state';
+import { Renderable } from './renderable';
 import { StopWatch } from './stop-watch';
 import { Tetromino } from './tetromino';
 
@@ -47,7 +48,7 @@ export class Game implements Renderable {
 		return this._bag;
 	}
 	public playedTime: StopWatch;
-	
+
 	public get state() { return this._state[ this._state.length - 1 ]; }
 
 	public setState( value: new( Game, any? ) => GameState, param? ) {

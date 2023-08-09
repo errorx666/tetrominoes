@@ -1,4 +1,6 @@
 import { Block } from './block';
+import { Matrix2D } from './matrix2d';
+import { Renderable } from './renderable';
 
 export class Grid implements Matrix2D<Block>, Renderable {
 	constructor( width: number, height: number ) {
@@ -74,7 +76,7 @@ export class Grid implements Matrix2D<Block>, Renderable {
 			}
 		} );
 	}
-	
+
 	public isInBounds( x: number, y: number, grid?: Matrix2D<Block> ) {
 		if( grid === undefined ) return this.boundsCheck( x, y );
 

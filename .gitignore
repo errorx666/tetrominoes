@@ -3,6 +3,7 @@
 !.gitignore
 *.map
 node_modules/
+dist/
 js/
 lib/
 backup/

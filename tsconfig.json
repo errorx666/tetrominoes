@@ -1,15 +1,14 @@
 {
 	"compilerOptions": {
-		"target": "es5",
-		"rootDir": "ts",
-		"outDir": "js",
-		"module": "commonjs",
+		"target": "ESNext",
+		"rootDir": "src",
+		"outDir": "dist",
+		"module": "ESNext",
 		"moduleResolution": "node",
-		"lib": [ "dom", "es2017" ],
+		"lib": [ "DOM", "DOM.Iterable", "ESNext" ],
 		"importHelpers": true
 	},
-	"files": [
-		"ts/**/*.ts",
-		"ts/**/*.d.ts"
+	"include": [
+		"src"
 	]
 }

@@ -1,3 +1,4 @@
+import { Renderable } from './renderable';
 import { StopWatch } from './stop-watch';
 
 export class Block implements Renderable {

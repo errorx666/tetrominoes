@@ -1,4 +1,4 @@
-declare interface Rectangle {
+export interface Rectangle {
 	width: number;
 	height: number;
 }

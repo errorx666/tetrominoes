@@ -1,4 +1,4 @@
-declare interface LeaderboardEntry {
+export interface LeaderboardEntry {
 	name: string;
 	score: number;
 	lines: number;

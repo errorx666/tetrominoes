@@ -2,6 +2,7 @@ import { Block } from './block';
 import { Board } from './board';
 import { GameStateInstructions } from './game-state';
 import { Grid } from './grid';
+import { Renderable } from './renderable';
 import { StopWatch } from './stop-watch';
 
 function choose<T>( choices: Array<T>, remove = false ): T {
@@ -25,7 +26,7 @@ export class Tetromino extends Grid implements Renderable {
 		this._hue = value;
 		this.forEach( ( x, y, b ) => b.hue = this._hue );
 	}
-	
+
 	private _hue: number;
 	public grid: Grid;
 	public x: number;
@@ -37,7 +38,7 @@ export class Tetromino extends Grid implements Renderable {
 
 	public render( c2d: CanvasRenderingContext2D ) {
 		c2d.save();
-		
+
 		c2d.translate( Block.width * ( this.x || 0 ), Block.height * ( this.y || 0 ) );
 		super.render( c2d );
 		c2d.restore();
@@ -124,7 +125,7 @@ class TetrominoL extends Tetromino {
 class TetrominoLMirrored extends TetrominoL {
 	constructor( hue: number = 240 ) {
 		super( hue );
-		
+
 		this.mirror();
 	}
 }

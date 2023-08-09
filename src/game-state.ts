@@ -1,9 +1,20 @@
 import { Block } from './block';
 import { Game } from './game';
 import { Grid } from './grid';
+import { LeaderboardEntry } from './leaderboard-entry';
+import { Renderable } from './renderable';
 import { StopWatch } from './stop-watch';
 import { Tetromino } from './tetromino';
 import { Timer } from './timer';
+
+export interface GameState extends Renderable {
+	start?( param? );
+	update?();
+	input?( e: KeyboardEvent );
+	suspend?();
+	resume?( param? );
+	stop?();
+}
 
 export class GameStateFalling implements GameState {
 	constructor( game: Game ) {
@@ -171,7 +182,7 @@ export class GameStateFalling implements GameState {
 
 	public render( c2d: CanvasRenderingContext2D ) {
 		c2d.save();
-		
+
 		c2d.globalAlpha = .1;
 
 		var y = 0;
@@ -262,12 +273,12 @@ export class GameStateClearing implements GameState {
 
 	public render( c2d: CanvasRenderingContext2D ) {
 		c2d.save();
-		
+
 		this._game.board.render( c2d );
 
 		c2d.restore();
 	}
-	
+
 	private done() {
 		var multiplier: number;
 		switch( this._lineCount ) {
@@ -287,7 +298,7 @@ export class GameStateClearing implements GameState {
 
 		this._game.score += multiplier * ( this._game.level + 1 );
 		this._game.lines += this._lineCount;
-		
+
 		this._game.setState( GameStateFalling );
 	}
 
