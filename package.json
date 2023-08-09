@@ -1,0 +1,20 @@
+{
+  "name": "tetrominoes",
+  "version": "0.0.0",
+  "license": "MIT",
+  "author": {
+    "name": "error",
+    "email": "error@error-unlimited.net"
+  },
+  "repository": "errorx666/tetrominoes",
+  "devDependencies": {
+    "browser-sync": "^2.18.2",
+    "del": "^2.2.2",
+    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp-sourcemaps": "^1.9.1",
+    "gulp-typescript": "^3.1.3",
+    "systemjs": "^0.19.41",
+    "tslib": "^1.2.0",
+    "typescript": "^2.2.0-dev.20161206"
+  }
+}

@@ -1,0 +1,8 @@
+.*
+!.editorconfig
+!.gitignore
+*.map
+node_modules/
+js/
+lib/
+backup/

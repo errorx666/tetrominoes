@@ -1,0 +1,15 @@
+{
+	"compilerOptions": {
+		"target": "es5",
+		"rootDir": "ts",
+		"outDir": "js",
+		"module": "commonjs",
+		"moduleResolution": "node",
+		"lib": [ "dom", "es2017" ],
+		"importHelpers": true
+	},
+	"files": [
+		"ts/**/*.ts",
+		"ts/**/*.d.ts"
+	]
+}
