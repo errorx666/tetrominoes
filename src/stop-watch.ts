@@ -1,39 +1,37 @@
 export class StopWatch {
 	public static start() {
-		var retval = new StopWatch;
+		const retval = new StopWatch;
 		retval.start();
 		return retval;
 	}
 
 	public start() {
-		var retval = this.stop();
-		this._startTime = StopWatch._now();
-		this._elapsed = undefined;
+		const retval = this.stop();
+		this.#startTime = performance.now();
+		this.#elapsed = undefined;
 		return retval;
 	}
 
 	public pause() {
-		this._pause = StopWatch._now();
+		this.#pause = performance.now();
 	}
 
 	public unpause() {
-		if( this._pause ) {
-			this._startTime += ( StopWatch._now() - this._pause );
-			this._pause = undefined;
+		if( this.#pause ) {
+			this.#startTime += ( performance.now() - this.#pause );
+			this.#pause = undefined;
 		}
 	}
 
 	public get elapsed() {
-		return this._elapsed || ( ( this._pause || StopWatch._now() ) - this._startTime );
+		return this.#elapsed || ( ( this.#pause ?? performance.now() ) - this.#startTime );
 	}
 
 	public stop() {
-		return this._elapsed = this.elapsed;
+		return this.#elapsed = this.elapsed;
 	}
 
-	private static _now: () => number = ( typeof performance === 'undefined' ) ? () => Date.now() : () => performance.now();
-
-	private _pause: number;
-	private _startTime: number;
-	private _elapsed: number;
+	#pause: number|undefined;
+	#startTime: number;
+	#elapsed: number;
 }

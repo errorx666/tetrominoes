@@ -2,13 +2,13 @@
 import { Game } from './game';
 
 ( () => {
-	var body = document.querySelector( 'body' ),
-		canvas = document.createElement( 'canvas' ),
-		audio = document.createElement( 'audio' ),
+	const body = document.querySelector( 'body' );
+	const canvas = document.createElement( 'canvas' );
+//	const audio = document.createElement( 'audio' );
 //			sourceOgg = document.createElement( 'source' ),
 //			sourceMp3 = document.createElement( 'source' ),
-		c2d = canvas.getContext( '2d' ),
-		game = new Game;
+	const c2d = canvas.getContext( '2d' );
+	const game = new Game;
 
 	canvas.width = ( game.board.width + 6 ) * Block.width;
 	canvas.height = game.board.height * Block.height;
@@ -27,7 +27,7 @@ import { Game } from './game';
 
 	body.appendChild( canvas );
 
-	var inputQueue: Array<KeyboardEvent> = [];
+	const inputQueue = [] as KeyboardEvent[];
 	window.onkeydown = ( e: KeyboardEvent ) => {
 		inputQueue.push( e );
 	};
@@ -35,7 +35,7 @@ import { Game } from './game';
 	window.requestAnimationFrame( function frame() {
 		c2d.clearRect( 0, 0, canvas.width, canvas.height );
 
-		var e: KeyboardEvent;
+		let e: KeyboardEvent;
 		while( e = inputQueue.shift() ) {
 			game.input( e );
 		}
