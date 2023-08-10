@@ -2,6 +2,7 @@ import path from 'path';
 import webpack from 'webpack';
 import express from 'express';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
 
 const dirname = path.resolve( '.' );
 
@@ -11,6 +12,7 @@ export default async function getConfig( env ) {
 		typescript: { loader: 'ts-loader', options: {} }
 	};
 	return {
+		context: path.resolve( 'src' ),
 		devtool: 'source-map',
 		devServer: {
 			onListening: devServer => {
@@ -36,9 +38,15 @@ export default async function getConfig( env ) {
 				{ test: /\.ts$/i, use: [ loaders.typescript ] }
 			]
 		},
+		output: {
+			path: path.resolve( dirname, 'dist' )
+		},
 		plugins: [
 			new HtmlWebpackPlugin( {
 				title: 'Tetrmoninoes'
+			} ),
+			new CopyWebpackPlugin( {
+				patterns: [ { from: '**/*.php', to: '.' } ]
 			} )
 		],
 		resolve: {

@@ -8,8 +8,9 @@
   },
   "repository": "errorx666/tetrominoes",
   "devDependencies": {
-    "del": "^7.0.0",
+    "copy-webpack-plugin": "^11.0.0",
     "html-webpack-plugin": "^5.5.3",
+    "rimraf": "^5.0.1",
     "ts-loader": "^9.4.4",
     "tslib": "^2.6.1",
     "typescript": "^5.1.6",
@@ -19,7 +20,7 @@
   },
   "scripts": {
     "build": "webpack --env production",
-    "clean": "del dist",
+    "clean": "rimraf dist",
     "dev": "webpack serve --env development"
   },
   "type": "module",
