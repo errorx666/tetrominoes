@@ -13,12 +13,13 @@ jobs:
     - node/run:
         yarn-run: build
   deploy:
-    machine:
-      enabled: true
+    docker:
+    - image: cimg/base:stable
     steps:
     - run:
         name: Deploy over SSH
-        command: "rsync -r dist $SSH_USER@$SSH_HOST:$SSH_WWWROOT/tetrominoes"
+        command: |
+        rsync -r dist $SSH_USER@$SSH_HOST:$SSH_WWWROOT/tetrominoes
 workflows:
   build-and-deploy:
     jobs:
