@@ -19,7 +19,7 @@ jobs:
     - run:
         name: Deploy over SSH
         command: |
-        rsync -r dist $SSH_USER@$SSH_HOST:$SSH_WWWROOT/tetrominoes
+          rsync -r dist $SSH_USER@$SSH_HOST:$SSH_WWWROOT/tetrominoes
 workflows:
   build-and-deploy:
     jobs:
