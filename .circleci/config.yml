@@ -11,6 +11,9 @@ jobs:
         install-yarn: true
         node-version: '18.14.2'
     - run:
+        name: yarn install --frozen-lockfile
+        command: yarn install --frozen-lockfile
+    - run:
         name: yarn run build
         command: yarn run build
   deploy:
