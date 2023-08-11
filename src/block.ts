@@ -2,13 +2,12 @@ import { Renderable } from './renderable';
 import { StopWatch } from './stop-watch';
 
 export class Block implements Renderable {
-	constructor( hue: number ) {
+	constructor( public hue: number ) {
 		this.hue = hue;
 	}
 
-	public static width = 24;
-	public static height = 24;
-	public hue: number;
+	public static width = 32;
+	public static height = 32;
 
 	public render( c2d: CanvasRenderingContext2D ) {
 		c2d.save();
