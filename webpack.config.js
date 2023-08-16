@@ -3,6 +3,7 @@ import webpack from 'webpack';
 import express from 'express';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
+import Handlebars from 'handlebars';
 
 const dirname = path.resolve( '.' );
 
@@ -43,10 +44,19 @@ export default async function getConfig( env ) {
 		},
 		plugins: [
 			new HtmlWebpackPlugin( {
-				title: 'Tetrmoninoes'
+				title: 'Tetrominoes'
 			} ),
 			new CopyWebpackPlugin( {
-				patterns: [ { from: '**/*.php', to: '.' } ]
+				patterns: [
+					{
+						from: '**/*.php',
+						transform: str => {
+							const template = Handlebars.compile( str.toString( 'utf-8' ), {} );
+							const { MYSQL_HOST, MYSQL_USERNAME, MYSQL_PASSWORD, MYSQL_DATABASE } = process.env;
+							return template( { MYSQL_HOST, MYSQL_USERNAME, MYSQL_PASSWORD, MYSQL_DATABASE } );
+						}
+					}
+				]
 			} )
 		],
 		resolve: {

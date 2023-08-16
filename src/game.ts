@@ -1,6 +1,7 @@
 import { Block } from './block';
 import { Board } from './board';
 import { choose } from './choose';
+import { hsl } from './color';
 import { GameState, GameStateInstructions } from './game-state';
 import { Renderable } from './renderable';
 import { StopWatch } from './stop-watch';
@@ -115,10 +116,10 @@ export class Game implements Renderable {
 		const e = this.#stopWatch.elapsed;
 		const c = ( e * .0025 ) % 360;
 
-		bg.addColorStop( 0, `hsl(${[ c, '30%', '80%' ].join( ',' )})` );
-		bg.addColorStop( 1, `hsl(${[ c, '10%', '80%' ].join( ',' )})` );
-		g.addColorStop( 0, `hsl(${[ c, '100%', '75%' ].join( ',' )})` );
-		g.addColorStop( 1, `hsl(${[ c, '100%', '50%' ].join( ',' )})` );
+		bg.addColorStop( 0, hsl( c, .3, .8 ) );
+		bg.addColorStop( 1, hsl( c, .1, .8 ) );
+		g.addColorStop( 0, hsl( c, 1, .75 ) );
+		g.addColorStop( 1, hsl( c, 1, .5 ) );
 
 		c2d.save();
 		c2d.fillStyle = bg;
