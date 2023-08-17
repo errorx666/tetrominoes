@@ -9,7 +9,7 @@ jobs:
     - checkout
     - node/install:
         install-yarn: true
-        node-version: '18.14.2'
+        node-version: '18.17.1'
     - run: yarn install --frozen-lockfile
     - run: yarn run build
     - store_artifacts:
